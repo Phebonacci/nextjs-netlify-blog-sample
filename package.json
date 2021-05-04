@@ -4,10 +4,22 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "dev:admin": "npx netlify-cms-proxy-server & next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next build && next export -o ./dist",
-    "test": "jest"
+    "export": "eslint '*/**/*.{js,ts,tsx}' --quiet && next build && next export -o ./dist",
+    "test": "jest",
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix"
+    ]
   },
   "dependencies": {
     "@mapbox/rehype-prism": "^0.6.0",
@@ -31,7 +43,16 @@
     "@types/jest": "^26.0.22",
     "@types/node": "^14.14.37",
     "@types/react": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "husky": "^6.0.0",
     "jest": "^26.6.3",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
     "ts-jest": "^26.5.4",
     "typescript": "^4.2.3",
     "yaml-loader": "^0.6.0"
