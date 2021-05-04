@@ -25,12 +25,12 @@ export type Props = {
 
 const components = { InstagramEmbed, YouTube, TwitterTweetEmbed };
 const slugToPostContent = (postContents => {
-  let hash = {}
+  const hash = {}
   postContents.forEach(it => hash[it.slug] = it)
   return hash;
 })(fetchPostContent());
 
-export default function Post({
+const Post: React.FC<Props> = ({
   title,
   dateString,
   slug,
@@ -38,7 +38,7 @@ export default function Post({
   author,
   description = "",
   source,
-}: Props) {
+}: Props) => {
   const content = hydrate(source, { components })
   return (
     <PostLayout
@@ -66,7 +66,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const slug = params.post as string;
   const source = fs.readFileSync(slugToPostContent[slug].fullPath, "utf8");
   const { content, data } = matter(source, {
-    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as object }
+    engines: { yaml: (s) => yaml.load(s, { schema: yaml.JSON_SCHEMA }) as Record<string, unknown> }
   });
   const mdxSource = await renderToString(content, { components, scope: data });
   return {
@@ -82,3 +82,4 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
+export default Post

@@ -3,7 +3,7 @@ import { AuthorContent } from "../lib/authors";
 type Props = {
   author: AuthorContent;
 };
-export default function Author({ author }: Props) {
+const Author: React.FC<Props> = ({ author }: Props) => {
   return (
     <>
       <span>{author.name}</span>
@@ -17,3 +17,5 @@ export default function Author({ author }: Props) {
     </>
   );
 }
+
+export default Author

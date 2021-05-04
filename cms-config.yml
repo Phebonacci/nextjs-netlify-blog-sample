@@ -1,6 +1,7 @@
 backend:
   name: git-gateway
-  branch: master
+  repo: https://github.com/Phebonacci/nextjs-netlify-blog-sample
+  branch: CMS_BRANCH # Will be replaced during build with the current branch
 local_backend: true
 media_folder: public/images
 public_folder: /images
