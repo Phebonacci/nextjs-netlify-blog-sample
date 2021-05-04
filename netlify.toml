@@ -1,3 +1,11 @@
+[context.production.environment]
+  CMS_BRANCH = "production"
+
+[context.deploy-preview.environment]
+  USER_SET_BRANCH = $1
+  DETECTED_BRANCH= $(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+  CMS_BRANCH = "${USER_SET_BRANCH:-$DETECTED_BRANCH}"
+
 [build]
   publish = "dist"
-  command = "npm run export"
+  command = "sed -i \"s/branch: production/branch: ${CMS_BRANCH}/g\" public/admin/config.yml && npm run export"
