@@ -4,7 +4,7 @@ import OpenGraphMeta from "../components/meta/OpenGraphMeta";
 import TwitterCardMeta from "../components/meta/TwitterCardMeta";
 import { SocialList } from "../components/SocialList";
 
-export default function Index() {
+const Index: React.FC = () => {
   return (
     <Layout>
       <BasicMeta url={"/"} />
@@ -13,7 +13,7 @@ export default function Index() {
       <div className="container">
         <div>
           <h1>
-            Hi, We're Next.js & Netlify<span className="fancy">.</span>
+            Hi, We&apos;re Next.js & Netlify<span className="fancy">.</span>
           </h1>
           <span className="handle">@nextjs-netlify-blog</span>
           <h2>A blog template with Next.js and Netlify.</h2>
@@ -60,3 +60,5 @@ export default function Index() {
     </Layout>
   );
 }
+
+export default Index
