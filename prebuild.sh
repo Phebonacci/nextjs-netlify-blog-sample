@@ -6,6 +6,8 @@ USER_SET_BRANCH=$1
 DETECTED_BRANCH=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
 BRANCH="${USER_SET_BRANCH:-$DETECTED_BRANCH}"
 
+echo "Using $BRANCH for the CMS"
+
 # Set branch on which the CMS edits files by creating
 # the netlify config from the cms-config and overwrite
 # the branch setting.

@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "dev:admin": "npx netlify-cms-proxy-server & next dev",
-    "prebuild": "eslint '*/**/*.{js,ts,tsx}' --quiet && chmod +x ./prebuild.sh",
+    "prebuild": "eslint '*/**/*.{js,ts,tsx}' --quiet && chmod +x ./prebuild.sh && ./prebuild.sh",
     "build": "next build",
     "start": "next start",
     "export": "next build && next export -o ./dist",
