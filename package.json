@@ -5,9 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "dev:admin": "npx netlify-cms-proxy-server & next dev",
+    "prebuild": "eslint '*/**/*.{js,ts,tsx}' --quiet",
     "build": "next build",
     "start": "next start",
-    "export": "eslint '*/**/*.{js,ts,tsx}' --quiet && next build && next export -o ./dist",
+    "export": "next build && next export -o ./dist",
     "test": "jest",
     "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
   },
